@@ -1,9 +1,12 @@
 package com.bjiang.map_ex;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -16,12 +19,20 @@ public class MainActivity extends Activity {
 
     private static LatLng goodLatLng = new LatLng(37, -120);
     private GoogleMap googleMap;
+    private EditText et_address, et_finalAddress;
+    LatLng addressPos, finalAddressPos;
+    Marker addressMarkerp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        et_address = (EditText) findViewById(R.id.addressEditText);
+        et_finalAddress = (EditText) findViewById(R.id.finalAddressEditText);
+
+
+        // Initial Map
         try {
 
             if(googleMap == null) {
@@ -67,5 +78,26 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showAddressMarker(View view) {
+
+        String newAddress = et_address.getText().toString();
+
+        if(newAddress != null) {
+            new PlaceAMarker().exeute();
+        }
+    }
+
+    public void getDirections(View view) {
+    }
+
+    class PlaceAMarker extends AsyncTask<String, String, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            String startAddress = params[0];
+            return null;
+        }
     }
 }
