@@ -1,4 +1,4 @@
 # GoogleMapExample-android
 
 
-![alt tag](http://i57.tinypic.com/2z4k3ux.jpg)
+![alt tag](http://i60.tinypic.com/t4yf4y.jpg)
